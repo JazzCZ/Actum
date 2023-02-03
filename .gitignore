@@ -4,6 +4,9 @@ bin-release/
 [Oo]bj/
 [Bb]in/
 
+#Visual Studio
+*.vs
+
 # Other files and folders
 .settings/
 
