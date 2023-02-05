@@ -6,6 +6,7 @@ bin-release/
 
 #Visual Studio
 *.vs
+*.sln.DotSettings.user
 
 # Other files and folders
 .settings/

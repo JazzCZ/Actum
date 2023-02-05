@@ -3,7 +3,7 @@ using SeleniumExtras.PageObjects;
 
 namespace ActumDigitalDemo.Selenium;
 
-internal class BaseComponent
+public class BaseComponent
 {
     protected ISearchContext SearchContext { get; }
     protected IWebDriver WebDriver { get; }

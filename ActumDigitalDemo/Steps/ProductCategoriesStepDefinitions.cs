@@ -1,5 +1,7 @@
+using System.Text.RegularExpressions;
 using ActumDigitalDemo.Extensions;
 using ActumDigitalDemo.PageObjects;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestPlatform;
 
 namespace ActumDigitalDemo.Steps;
@@ -17,9 +19,6 @@ public class ProductCategoriesStepDefinitions
     public void GivenUserIsOnShopHomepage() {
         var page = new HomePage();
         page.Navigate();
-        var y = page.Categories;
-        var x= page.Header.CartLink;
-        x.Click();
         _scenarioContext["currentPage"] = page;
     }
 
@@ -44,11 +43,14 @@ public class ProductCategoriesStepDefinitions
 
     [Then(@"user can see '([^']*)'")]
     public void ThenUserCanSee(string productType) {
-        throw new PendingStepException();
+        var page = _scenarioContext.GetCurrentPage<HomePage>();
+        page.Products.Should().HaveCountGreaterThan(0);
     }
 
-    [Then(@"user can see images")]
-    public void ThenUserCanSeeImages() {
-        throw new PendingStepException();
+    [Then(@"user can see price")]
+    public void ThenUserCanSeePrice() {
+        var page = _scenarioContext.GetCurrentPage<HomePage>();
+        var currecnyAndDigitsRegex = new Regex("\\$\\d+");
+        page.Products.First().Price.Text.Should().MatchRegex(currecnyAndDigitsRegex);
     }
 }

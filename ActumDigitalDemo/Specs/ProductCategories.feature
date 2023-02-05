@@ -6,7 +6,7 @@ Scenario Outline: User is able to browse categories
 	Given user is on shop homepage
 	When user navigates to '<categoryName>' category
 	Then user can see '<productType>'
-		And user can see images
+		And user can see price
 
  Examples: 
  | categoryName | productType |
