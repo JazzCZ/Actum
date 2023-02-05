@@ -1,24 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ActumDigitalDemo.Frameworks.Attributes;
-using ActumDigitalDemo.Selenium;
-using NUnit.Framework.Interfaces;
+﻿using ActumDigitalDemo.Selenium;
 using OpenQA.Selenium;
-using SeleniumExtras.PageObjects;
 
-namespace ActumDigitalDemo.PageObjects
+namespace ActumDigitalDemo.PageObjects;
+
+internal class HomePage : BasePage
 {
-    internal class HomePage : BasePage
-    {
+    // [FindsAllById("itemc")] //TODO needs to implement tag that will return collection
+    // public IEnumerable<IWebElement> Categories { get; set; }
+    public IEnumerable<IWebElement> Categories => webDriver.FindElements(By.Id("itemc"));
 
-        [FindsById("itemc")]
-        public List<IWebElement> Categories { get; set; }
-
-        public HomePage() {
-            url = "https://www.demoblaze.com/index.html";
-        }
+    public HomePage() {
+        url = "https://www.demoblaze.com/index.html";
     }
 }

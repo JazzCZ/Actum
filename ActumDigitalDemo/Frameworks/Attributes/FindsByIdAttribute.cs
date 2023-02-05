@@ -9,8 +9,7 @@ internal class FindsByIdAttribute : AbstractFindsByAttribute
     public override By Finder => By.Id(_id);
     private readonly string _id;
 
-    public FindsByIdAttribute(string id) 
-    {
-        _id = id;
+    public FindsByIdAttribute(string id) {
+        _id = id ?? throw new ArgumentNullException(nameof(id));
     }
 }

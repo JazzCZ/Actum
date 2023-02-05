@@ -1,5 +1,6 @@
 using ActumDigitalDemo.Extensions;
 using ActumDigitalDemo.PageObjects;
+using Microsoft.VisualStudio.TestPlatform;
 
 namespace ActumDigitalDemo.Steps;
 
@@ -16,6 +17,9 @@ public class ProductCategoriesStepDefinitions
     public void GivenUserIsOnShopHomepage() {
         var page = new HomePage();
         page.Navigate();
+        var y = page.Categories;
+        var x= page.Header.CartLink;
+        x.Click();
         _scenarioContext["currentPage"] = page;
     }
 
@@ -25,13 +29,13 @@ public class ProductCategoriesStepDefinitions
 
         switch (categoryName.ToLowerInvariant()) {
             case "phones":
-                page.Categories[0].Click();
+                page.Categories.ToList()[0].Click();
                 break;
             case "laptops":
-                page.Categories[1].Click();
+                page.Categories.ToList()[1].Click();
                 break;
             case "monitors":
-                page.Categories[2].Click();
+                page.Categories.ToList()[2].Click();
                 break;
             default:
                 throw new Exception("unknown category name"); //TODO create custom exception
@@ -39,7 +43,7 @@ public class ProductCategoriesStepDefinitions
     }
 
     [Then(@"user can see '([^']*)'")]
-    public void ThenUserCanSee(string phones) {
+    public void ThenUserCanSee(string productType) {
         throw new PendingStepException();
     }
 

@@ -6,22 +6,21 @@ namespace ActumDigitalDemo.Selenium;
 
 internal class BasePage
 {
-    protected string url;
-    private IWebDriver webDriver;
+    public HeaderComponent Header;
 
     [FindsById("navbarExample")]
     private IWebElement HeaderElement;
 
-    public HeaderComponent Header;
+    protected string url;
+    protected readonly IWebDriver webDriver;
 
     public BasePage() {
-        Header = new HeaderComponent(webDriver, HeaderElement);
         webDriver = GlobalSetup.GetWebDriver();
-
+        PageFactory.InitElements(webDriver, this);
+        Header = new HeaderComponent(webDriver, HeaderElement);
     }
 
-    public void Navigate()
-    {
+    public void Navigate() {
         webDriver.Navigate().GoToUrl(url);
     }
 }
