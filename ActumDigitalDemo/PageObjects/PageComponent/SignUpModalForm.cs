@@ -4,7 +4,7 @@ using SeleniumExtras.PageObjects;
 
 namespace ActumDigitalDemo.Selenium;
 
-internal class SignUpModalForm : BaseComponent
+public class SignUpModalForm : BaseComponent
 {
     [FindsById("sign-username")]
     public IWebElement UsernameInput;

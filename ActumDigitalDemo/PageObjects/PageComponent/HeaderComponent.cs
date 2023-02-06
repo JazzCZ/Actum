@@ -1,17 +1,20 @@
 ﻿using ActumDigitalDemo.Frameworks.Attributes;
+using ActumDigitalDemo.PageObjects;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
+using SeleniumExtras.WaitHelpers;
 
 namespace ActumDigitalDemo.Selenium;
 
-internal class HeaderComponent : BaseComponent
+public class HeaderComponent : BaseComponent
 {
     private SignUpModalForm SingUpForm;
     private LogInModalForm LogInForm;
 
 
     [FindsById("cartur")]
-    public IWebElement CartLink { get; set; }
+    private IWebElement CartLink { get; set; }
 
     [FindsById("nameofuser")]
     public IWebElement LoggedUserName { get; set; }
@@ -43,5 +46,14 @@ internal class HeaderComponent : BaseComponent
         LoginLink.Click();
         LogInForm = new LogInModalForm(WebDriver, WebDriver);
         return LogInForm;
+    }
+
+    public CartPage NavigatetoCart() {
+        CartLink.Click();
+        return new CartPage();
+    }
+    public void LoggedUserNameIsVisible() {
+        var wait = new WebDriverWait(WebDriver, TimeSpan.FromSeconds(5));
+        wait.Until(ExpectedConditions.ElementIsVisible(By.Id("nameofuser")));
     }
 }

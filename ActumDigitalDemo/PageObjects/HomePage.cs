@@ -7,7 +7,7 @@ using static NUnit.Framework.Internal.OSPlatform;
 
 namespace ActumDigitalDemo.PageObjects;
 
-internal class HomePage : BasePage
+public class HomePage : BasePage
 {
     // [FindsAllById("itemc")] //TODO needs to implement tag that will return collection
     // public IEnumerable<IWebElement> Categories { get; set; }

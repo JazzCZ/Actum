@@ -1,4 +1,5 @@
 ﻿using ActumDigitalDemo.Frameworks.Attributes;
+using ActumDigitalDemo.PageObjects;
 using OpenQA.Selenium;
 
 namespace ActumDigitalDemo.Selenium;
@@ -18,4 +19,9 @@ public class ProductComponent : BaseComponent
     public IWebElement Price;
 
     public ProductComponent(IWebDriver webDriver, ISearchContext context) : base(webDriver, context) { }
+
+    public ProductDetailPage OpenDetailPage() {
+        Name.Click();
+        return new ProductDetailPage();
+    }
 }

@@ -21,6 +21,7 @@ internal class GlobalSetup
 
     [AfterScenario]
     public static void TearDown() {
+        webDriver.Manage().Cookies.DeleteAllCookies();
         webDriver?.Quit();
         webDriver?.Dispose();
     }

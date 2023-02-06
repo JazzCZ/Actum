@@ -1,10 +1,12 @@
 ﻿using ActumDigitalDemo.Frameworks.Attributes;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
+using SeleniumExtras.WaitHelpers;
 
 namespace ActumDigitalDemo.Selenium;
 
-internal class LogInModalForm : BaseComponent
+public class LogInModalForm : BaseComponent
 {
     [FindsById("loginusername")]
     public IWebElement UsernameInput;

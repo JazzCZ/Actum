@@ -2,7 +2,7 @@ using ActumDigitalDemo.Extensions;
 using ActumDigitalDemo.PageObjects;
 using ActumDigitalDemo.Selenium;
 using FluentAssertions;
-using OpenQA.Selenium;
+
 
 namespace ActumDigitalDemo.Steps;
 

@@ -4,7 +4,7 @@ using SeleniumExtras.PageObjects;
 
 namespace ActumDigitalDemo.Selenium;
 
-internal class BasePage
+public class BasePage
 {
     public HeaderComponent Header;
 
