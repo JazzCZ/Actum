@@ -1,5 +1,4 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
 namespace ActumDigitalDemo.Selenium;
@@ -8,6 +7,9 @@ namespace ActumDigitalDemo.Selenium;
 internal class GlobalWebDriverHooks
 {
     private static IWebDriver webDriver;
+
+    private static readonly long testRunNumber = DateTimeOffset.Now.ToUnixTimeSeconds();
+    private static long screenNumberCounter;
 
     public static IWebDriver GetWebDriver() {
         return webDriver ??= new ChromeDriver();
@@ -20,12 +22,8 @@ internal class GlobalWebDriverHooks
         webDriver.Manage().Window.Maximize();
     }
 
-    private static readonly long testRunNumber = DateTimeOffset.Now.ToUnixTimeSeconds();
-    private static long screenNumberCounter;
-
-    [AfterStep()]
+    [AfterStep]
     public static void makeScreenshot(FeatureContext featureContext, ScenarioContext scenarioContext) {
-
         var parentFolder = DateTime.Now.ToString("dd'-'MM");
         var screenName = scenarioContext.StepContext.StepInfo.Text;
 

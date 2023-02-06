@@ -1,4 +1,3 @@
-
 using ActumDigitalDemo.Extensions;
 using ActumDigitalDemo.PageObjects;
 using ActumDigitalDemo.Selenium;
@@ -9,13 +8,13 @@ namespace ActumDigitalDemo.Steps;
 [Binding]
 public class CartStepDefinitions
 {
-    private readonly ScenarioContext _scenarioContext;
     private const string ProductNameInCartKey = "productNameInCart";
-
+    private readonly ScenarioContext _scenarioContext;
 
     public CartStepDefinitions(ScenarioContext scenarioContext) {
         _scenarioContext = scenarioContext;
     }
+
     [Given(@"user is logged in")]
     public void GivenUserIsLoggedIn() {
         var page = _scenarioContext.GetCurrentPage<HomePage>();
@@ -27,8 +26,7 @@ public class CartStepDefinitions
     }
 
     [Given(@"user is on '([^']*)' category")]
-    public void GivenUserIsOnCategory(string categoryName)
-    {
+    public void GivenUserIsOnCategory(string categoryName) {
         var page = _scenarioContext.GetCurrentPage<HomePage>();
         page.ChangeCategoryWithWait(categoryName);
     }
@@ -56,14 +54,12 @@ public class CartStepDefinitions
 
     [Then(@"user can see his products in cart page")]
     public void ThenUserCanSeeHisProductsInCartPage() {
-        var page =_scenarioContext.GetCurrentPage<CartPage>();
+        var page = _scenarioContext.GetCurrentPage<CartPage>();
         page.productsInCart.Text.Should().Contain(_scenarioContext.Get<string>(ProductNameInCartKey)); //TODO change cart to grid and iterate
     }
 
     [When(@"user select second product")]
-    public void WhenUserSelectSecondProduct()
-    {
+    public void WhenUserSelectSecondProduct() {
         throw new PendingStepException();
     }
-
 }

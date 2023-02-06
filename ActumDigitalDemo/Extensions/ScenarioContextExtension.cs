@@ -13,6 +13,6 @@ internal static class ScenarioContextExtension
     }
 
     public static T GetCurrentPage<T>(this ScenarioContext context) where T : BasePage => context["currentPage"] as T;
-    
-    public static T GetCurrentComponent<T>(this ScenarioContext context) where T : BaseComponent=> context["currentComponent"] as T;
+
+    public static T GetCurrentComponent<T>(this ScenarioContext context) where T : BaseComponent => context["currentComponent"] as T;
 }

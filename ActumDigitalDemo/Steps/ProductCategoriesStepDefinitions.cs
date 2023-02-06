@@ -2,8 +2,6 @@ using System.Text.RegularExpressions;
 using ActumDigitalDemo.Extensions;
 using ActumDigitalDemo.PageObjects;
 using FluentAssertions;
-using Microsoft.VisualStudio.TestPlatform;
-using static NUnit.Framework.Internal.OSPlatform;
 
 namespace ActumDigitalDemo.Steps;
 

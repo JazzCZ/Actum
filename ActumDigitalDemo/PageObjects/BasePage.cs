@@ -6,13 +6,13 @@ namespace ActumDigitalDemo.Selenium;
 
 public class BasePage
 {
+    protected readonly IWebDriver webDriver;
     public HeaderComponent Header;
 
     [FindsById("navbarExample")]
     private IWebElement HeaderElement;
 
     protected string url;
-    protected readonly IWebDriver webDriver;
 
     public BasePage() {
         webDriver = GlobalWebDriverHooks.GetWebDriver();

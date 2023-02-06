@@ -3,14 +3,12 @@ using ActumDigitalDemo.PageObjects;
 using ActumDigitalDemo.Selenium;
 using FluentAssertions;
 
-
 namespace ActumDigitalDemo.Steps;
 
 [Binding]
 public class UserManagementStepDefinitions
 {
     private readonly ScenarioContext _scenarioContext;
-
 
     public UserManagementStepDefinitions(ScenarioContext scenarioContext) {
         _scenarioContext = scenarioContext;
@@ -51,7 +49,6 @@ public class UserManagementStepDefinitions
         page.SingUpModalIsVisible().Should().BeTrue();
     }
 
-
     [Then(@"user is logged in")]
     public void ThenUserIsLoggedIn() {
         var page = _scenarioContext.GetCurrentPage<HomePage>();
@@ -87,7 +84,7 @@ public class UserManagementStepDefinitions
 
 public static class Users
 {
-    public static User commonUser = new User( "a@b.c", "abc" );
+    public static User commonUser = new User("a@b.c", "abc");
 }
 
 public class User

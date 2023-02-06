@@ -1,9 +1,7 @@
 ﻿using ActumDigitalDemo.Frameworks.Attributes;
 using ActumDigitalDemo.Selenium;
-using FluentAssertions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using static NUnit.Framework.Internal.OSPlatform;
 
 namespace ActumDigitalDemo.PageObjects;
 
@@ -26,13 +24,12 @@ public class HomePage : BasePage
         var beforeSwitchCount = Products.Count();
         var afterSwitchCount = Products.Count();
 
-        WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(10));
+        var wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(10));
 
-        switch (categoryName.ToLowerInvariant())
-        {
+        switch (categoryName.ToLowerInvariant()) {
             case "phones":
                 Categories.ToList()[0].Click();
-                wait.Until(_=>Products.First().Name.Text.ToLowerInvariant().Contains("samsung"));
+                wait.Until(_ => Products.First().Name.Text.ToLowerInvariant().Contains("samsung"));
                 break;
             case "laptops":
                 Categories.ToList()[1].Click();

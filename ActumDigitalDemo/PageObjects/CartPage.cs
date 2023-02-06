@@ -8,5 +8,4 @@ public class CartPage : BasePage
 {
     [FindsById("tbodyid")]
     public IWebElement productsInCart { get; set; }
-
 }

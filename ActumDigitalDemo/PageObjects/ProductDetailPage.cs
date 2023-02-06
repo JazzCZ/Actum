@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics;
 using ActumDigitalDemo.Frameworks.Attributes;
 using ActumDigitalDemo.Selenium;
-using NUnit.Framework;
 using OpenQA.Selenium;
 
 namespace ActumDigitalDemo.PageObjects;
@@ -26,6 +25,7 @@ public class ProductDetailPage : BasePage
                 nape = ex;
             }
         }
+
         throw nape;
     }
 }

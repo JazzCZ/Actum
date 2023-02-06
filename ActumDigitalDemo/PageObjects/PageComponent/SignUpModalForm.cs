@@ -6,17 +6,16 @@ namespace ActumDigitalDemo.Selenium;
 
 public class SignUpModalForm : BaseComponent
 {
-    [FindsById("sign-username")]
-    public IWebElement UsernameInput;
-
-    [FindsById("sign-password")]
-    public IWebElement PasswordInput;
-
     [FindsBySequence]
     [FindsById("signInModal")]
     [FindsByCss(".btn-primary")]
     public IWebElement ConfirmButton;
 
+    [FindsById("sign-password")]
+    public IWebElement PasswordInput;
+
+    [FindsById("sign-username")]
+    public IWebElement UsernameInput;
 
     public SignUpModalForm(IWebDriver webDriver, ISearchContext context) : base(webDriver, context) { }
 }
