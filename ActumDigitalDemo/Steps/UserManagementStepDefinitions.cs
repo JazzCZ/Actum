@@ -46,7 +46,7 @@ public class UserManagementStepDefinitions
     [Then(@"user can see successful sign up")]
     public void ThenUserCanSeeSuccessfulSignUp() {
         var page = _scenarioContext.GetCurrentPage<HomePage>();
-        page.SingUpModalIsVisible().Should().BeTrue();
+        page.AcceptSuccessAlert().Should().Be("Sign up successful.");
     }
 
     [Then(@"user is logged in")]

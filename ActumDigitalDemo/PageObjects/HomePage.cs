@@ -2,6 +2,7 @@
 using ActumDigitalDemo.Selenium;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using System.Diagnostics;
 
 namespace ActumDigitalDemo.PageObjects;
 
@@ -21,8 +22,6 @@ public class HomePage : BasePage
     }
 
     public void ChangeCategoryWithWait(string categoryName) { //find out something smarter in cooperation with devs
-        var beforeSwitchCount = Products.Count();
-        var afterSwitchCount = Products.Count();
 
         var wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(10));
 
@@ -44,9 +43,22 @@ public class HomePage : BasePage
         }
     }
 
-    public bool SingUpModalIsVisible() {
-        var current = webDriver.CurrentWindowHandle;
-        //TODO playing with handles and some values(as modal is not easily accessible by inspect) on them, do not have time for that now.
-        return true;
+    public string AcceptSuccessAlert() {
+        var nape = new NoAlertPresentException();
+
+        var stopwatch = Stopwatch.StartNew();
+        while (stopwatch.Elapsed < TimeSpan.FromSeconds(5)) {
+            try {
+                var alert = webDriver.SwitchTo().Alert();
+                var returnText = alert.Text;
+                alert.Accept();
+                return returnText;
+            }
+            catch (NoAlertPresentException ex) {
+                nape = ex;
+            }
+        }
+
+        throw nape;
     }
 }
