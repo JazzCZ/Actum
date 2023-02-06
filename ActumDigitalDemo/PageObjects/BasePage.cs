@@ -15,7 +15,7 @@ public class BasePage
     protected readonly IWebDriver webDriver;
 
     public BasePage() {
-        webDriver = GlobalSetup.GetWebDriver();
+        webDriver = GlobalWebDriverHooks.GetWebDriver();
         PageFactory.InitElements(webDriver, this);
         Header = new HeaderComponent(webDriver, HeaderElement);
     }
