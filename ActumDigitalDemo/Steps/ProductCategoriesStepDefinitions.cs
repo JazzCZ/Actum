@@ -3,6 +3,7 @@ using ActumDigitalDemo.Extensions;
 using ActumDigitalDemo.PageObjects;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestPlatform;
+using static NUnit.Framework.Internal.OSPlatform;
 
 namespace ActumDigitalDemo.Steps;
 
@@ -25,26 +26,27 @@ public class ProductCategoriesStepDefinitions
     [When(@"user navigates to '([^']*)' category")]
     public void WhenUserNavigatesToCategory(string categoryName) {
         var page = _scenarioContext.GetCurrentPage<HomePage>();
-
-        switch (categoryName.ToLowerInvariant()) {
-            case "phones":
-                page.Categories.ToList()[0].Click();
-                break;
-            case "laptops":
-                page.Categories.ToList()[1].Click();
-                break;
-            case "monitors":
-                page.Categories.ToList()[2].Click();
-                break;
-            default:
-                throw new Exception("unknown category name"); //TODO create custom exception
-        }
+        page.ChangeCategoryWithWait(categoryName);
     }
 
     [Then(@"user can see '([^']*)'")]
     public void ThenUserCanSee(string productType) {
         var page = _scenarioContext.GetCurrentPage<HomePage>();
         page.Products.Should().HaveCountGreaterThan(0);
+
+        switch (productType.ToLowerInvariant()) {
+            case "phones":
+                page.Products.First().Name.Text.Should().Contain("Samsung");
+                break;
+            case "laptops":
+                page.Products.First().Name.Text.Should().Contain("Sony");
+                break;
+            case "monitors":
+                page.Products.First().Name.Text.Should().Contain("monitor");
+                break;
+            default:
+                throw new Exception("unknown product type"); //TODO create custom exception
+        }
     }
 
     [Then(@"user can see price")]

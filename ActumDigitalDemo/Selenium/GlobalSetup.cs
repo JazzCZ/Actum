@@ -12,14 +12,14 @@ internal class GlobalSetup
         return webDriver ??= new ChromeDriver();
     }
 
-    [BeforeTestRun]
+    [BeforeScenario]
     public static void Init() {
         webDriver = new ChromeDriver();
         webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
         webDriver.Manage().Window.Maximize();
     }
 
-    [AfterTestRun]
+    [AfterScenario]
     public static void TearDown() {
         webDriver?.Quit();
         webDriver?.Dispose();
