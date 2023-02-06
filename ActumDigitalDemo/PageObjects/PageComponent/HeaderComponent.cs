@@ -52,8 +52,9 @@ public class HeaderComponent : BaseComponent
         CartLink.Click();
         return new CartPage();
     }
-    public void LoggedUserNameIsVisible() {
+    public bool LoggedUserNameIsVisible() {
         var wait = new WebDriverWait(WebDriver, TimeSpan.FromSeconds(5));
         wait.Until(ExpectedConditions.ElementIsVisible(By.Id("nameofuser")));
+        return true;
     }
 }

@@ -55,6 +55,7 @@ public class UserManagementStepDefinitions
     [Then(@"user is logged in")]
     public void ThenUserIsLoggedIn() {
         var page = _scenarioContext.GetCurrentPage<HomePage>();
+        page.Header.LoggedUserNameIsVisible().Should().BeTrue();
         page.Header.LoggedUserName.Text.Should().Be($"Welcome {Users.commonUser.email}");
     }
 
