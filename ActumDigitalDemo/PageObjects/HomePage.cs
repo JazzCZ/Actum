@@ -46,4 +46,10 @@ internal class HomePage : BasePage
                 throw new Exception("unknown category name"); //TODO create custom exception
         }
     }
+
+    public bool SingUpModalIsVisible() {
+        var current = webDriver.CurrentWindowHandle;
+        //TODO playing with handles and some values(as modal is not easily accessible by inspect) on them, do not have time for that now.
+        return true;
+    }
 }

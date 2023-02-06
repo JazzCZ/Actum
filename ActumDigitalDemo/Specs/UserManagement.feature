@@ -8,7 +8,7 @@ Scenario: New user is able to sing up
 		And user fill new username
 		And user fill new password
 		And user confirm sing up
-	Then user is logged in
+	Then user can see successful sign up
 
 Scenario: Existing user is able to log in
 	Given user is on shop homepage

@@ -4,7 +4,8 @@ cart feature must works
 
 
 Scenario: One produtct in a cart
-	Given user is logged in
+	Given user is on shop homepage
+		And user is logged in
 		And user is on Phones category
 	When user select first phone
 		And user put goods in cart
@@ -13,7 +14,8 @@ Scenario: One produtct in a cart
 	Then user can see his products in cart page
 
 Scenario: Multiple produtct in a cart
-	Given user is logged in
+	Given user is on shop homepage
+		And user is logged in
 		And user is on Phones category
 	When user select first phone
 		And user select second phone
